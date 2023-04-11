@@ -1,0 +1,11 @@
+# development files
+.idea/
+venv
+
+# production files
+*.db
+db.sqlite3
+
+# misc
+.DS_Store
+__pycache__

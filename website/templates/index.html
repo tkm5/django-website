@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+  <h1>HOME</h1>
+
+  {% if username == 'Takumi' %}
+    <h2>myself lol</h2>
+  {% elif username %}
+    <h2>Welcome {{ username }}</h2>
+  {% else %}
+    <h2>Welcome anonymous user</h2>
+  {% endif %}
+
+  <img src="{% static 'welcome.jpg' %}" alt="welcome_image">
+  {{ common_var }}
+{% endblock %}
