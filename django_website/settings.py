@@ -74,12 +74,36 @@ WSGI_APPLICATION = 'django_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+import dj_database_url
+from dotenv import (
+    find_dotenv,
+    load_dotenv,
+)
+load_dotenv(find_dotenv())
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
+# db settings memo ================================================
+#
+# 1. install postgresql
+#    - brew install postgresql
+#    - psql --version
+# 2. create database
+#    - brew services start postgresql
+#    - psql postgres
+#    - \du
+# 3. setting password
+#    - \password <username>
+# 4. create database
+#    - CREATE DATABASE <database_name>;
+# 5. logout
+#    - \q
+# 6. install psycopg2-binary
+#    - pip install psycopg2-binary
+# 7. make .env file
+#    - DATABASE_URL=postgres://<username>:password@localhost/<database_name>
+# ================================================================
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
